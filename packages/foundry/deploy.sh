@@ -2,7 +2,7 @@
 forge b --skip test script
 
 
-forge script ./script/Deploy.s.sol -f http://127.0.0.1:8545 --broadcast --json
+forge script ./script/Deploy.s.sol -f http://127.0.0.1:8545 --broadcast
 
 
-python3 update_contracts.py
+python3 deploy.py

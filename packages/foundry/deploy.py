@@ -2,8 +2,8 @@
 Automation for update debug section in front-end
 """
 from dataclasses import dataclass, field
+from json import dumps, load
 from typing import List
-from json import load
 
 @dataclass
 class Contract:
@@ -13,8 +13,8 @@ class Contract:
         - contractName: str
         - abi: list
     """
-    name: str
     address: str
+    name: str
     abi: list = field(default_factory=list)
 
 
@@ -60,7 +60,7 @@ for contract in contracts:
     }
 
 
-typescript_content = f"const contracts = {json_config} as const; \n\n export default contracts"
+typescript_content = f"const deployedContracts = {dumps(json_config)} as const; \n\n export default deployedContracts"
 
 
 with open(TARGET_DIR, "w") as ts_file:
